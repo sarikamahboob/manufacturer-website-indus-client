@@ -1,0 +1,27 @@
+[
+    {
+        "name":"Vortex V3 WSS Chain And Sprocket Kit",
+        "image": "https://i.ibb.co/pbm2LS7/parts1.jpg",
+        "description":"Vortex V3 WSS Chain and Sprocket Kits are perfect for replacing your worn out OEM setup. WSS Kits are lighter, stronger and cheaper than stock but still retain your bike's original gearing and chain pitch (most models). Up front, these kits feature a nickel plated steel sprocket with weight-reduction holes that help keep rotating mass to a minimum. The durable rear sprocket is laser cut from a carbon steel alloy with large cut outs and a cupped down design to minimize un-sprung weight and further reduce rotating mass.The RX3 chain with tri-glide seal provides 3 pockets of lubrication that reduces heat and friction, while increasing wear life by as much as 10 times over standard O-ring chains. Tensile strength of up to 11,000ft lbs.The SX3 chain with tri-glide seal design reduces heat and friction resulting in longer wear life than a standard O-ring chain. Tensile strength of up to 9,000ft lbs.",
+        "mQuantity":"100",
+        "aQuantity":"1000",
+        "price":"299"
+    },
+    {
+        "name":"K&N Oil Filters",
+        "image": "https://i.ibb.co/Fh41sJx/parts2.jpg",
+        "description":"K&N Oil Filters are designed to satisfy the needs of racers and engine builders as well as the average motorcycle or ATV / UTV owner who wants the best oil filter available. K&N Oil Filters feature synthetic medias that trap 99% of harmful contaminants without compromising oil flow rates.The K&N 'wrench off' oil filters feature a 17mm nut affixed onto the end that allows for easy installation and removal. The 17mm nut is cross-drilled making it super easy to throw on a safety wire. Its heavy duty canister and base plate protect against punctures while the double-rolled seal and pre-lube gasket ensure a secure seal.",
+        "mQuantity":"150",
+        "aQuantity":"2000",
+        "price":"99"
+    },
+    {
+        "name":"Rekluse Core EXP 3.0 Clutch Kit",
+        "image": "https://i.ibb.co/whhcxPz/parts3.jpg",
+        "description":"Trusted by elite racers and enthusiasts worldwide, the Rekluse Core EXP auto-clutch is the premiere centrifugal clutch system. Using the principles of centrifugal force this clutch automatically engages and disengages based on engine RPM. This means you can come to a complete stop in gear, or lock up the rear wheel before a corner without ever touching the clutch lever and your bike stays running.",
+        "mQuantity":"200",
+        "aQuantity":"3000",
+        "price":"1199"
+    }
+
+]
