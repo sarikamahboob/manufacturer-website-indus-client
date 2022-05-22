@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../../Images/banner.png";
+import banner from "../../../Images/banner.png";
 
 const Banner = () => {
   return (
@@ -10,7 +10,7 @@ const Banner = () => {
           <h1 class="mb-5 text-5xl font-bold text-accent font-saira">
             Explore The Indus
           </h1>
-          <p class="mb-5 text-base-100 font-roboto">
+          <p class="mb-5 text-white font-roboto">
             Get the best services, best materials and best delivery
           </p>
           <button class="btn btn-accent text-base-100 font-roboto  hover:bg-transparent ">
