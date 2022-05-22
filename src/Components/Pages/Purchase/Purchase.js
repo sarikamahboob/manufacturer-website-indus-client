@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
@@ -7,14 +8,12 @@ import auth from "../../../firebase.init";
 const Purchase = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const [user] = useAuthState(auth);
-  console.log(user);
 
   const [parts, setParts] = useState([]);
   const [isReload, setIsReload] = useState(false);
@@ -27,18 +26,14 @@ const Purchase = () => {
       .then((data) => setParts(data));
   }, [isReload]);
 
-  const onSubmit = async (data) => {
-    console.log(data);
-  };
-
-  const handleQuantity = (event) => {
-    event.preventDefault();
-    parts.quantity = quantity;
+  const onSubmit = (data) => {
+    const inputQuantity = data.quantity;
     const quantity =
-      parseInt(event.target.quantity.value) + parseInt(parts.quantity) ||
-      parseInt(event.target.quantity.value) - parseInt(parts.quantity);
+      parseInt(inputQuantity) + parseInt(parts.quantity) ||
+      parseInt(inputQuantity) - parseInt(parts.quantity);
 
     if (quantity < 0) {
+      setError("You have to purchase more than minimum order quantity");
       return;
     }
 
@@ -48,8 +43,11 @@ const Purchase = () => {
     }
 
     if (quantity > parts.aQuantity) {
-      setError("You can't purchase product more than available quantity ");
+      setError("You can't purchase product more than available quantity");
       return;
+    }
+
+    if (quantity > parts.aQuantity) {
     }
 
     const updateQuantity = { quantity };
@@ -65,12 +63,8 @@ const Purchase = () => {
       .then((data) => {
         console.log(data);
         setIsReload(!isReload);
-        event.target.reset();
+        setError(" ");
       });
-  };
-
-  const handleDecreaseQuantity = (event) => {
-    event.preventDefault();
   };
 
   return (
@@ -103,29 +97,6 @@ const Purchase = () => {
               <span className="font-bold text-secondary">Price:</span> $
               {parts.price}
             </p>
-
-            <form onSubmit={handleQuantity} className="font-roboto mt-4">
-              <div className="form-control w-full max-w-xs flex-row items-center">
-                <label className="label w-full">
-                  <span className="label-text text-accent text-lg font-bold">
-                    Order Quantity:
-                  </span>
-                </label>
-                <input
-                  className="input input-bordered w-full max-w-xs"
-                  type="number"
-                  name="quantity"
-                  id=""
-                  placeholder="Number"
-                />
-              </div>
-              <p className="mt-4 text-red-500">{error}</p>
-              <input
-                className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
-                type="submit"
-                value="Update Quantity"
-              />
-            </form>
           </div>
 
           <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -142,9 +113,8 @@ const Purchase = () => {
                     disabled
                     value={user.displayName}
                     {...register("name", {
-                      required: {
-                        value: true,
-                      },
+                      required: true,
+                      value: user.displayName,
                     })}
                   />
                 </div>
@@ -160,9 +130,8 @@ const Purchase = () => {
                     disabled
                     value={user.email}
                     {...register("email", {
-                      required: {
-                        value: user.email,
-                      },
+                      required: true,
+                      value: user.email,
                     })}
                   />
                 </div>
@@ -175,7 +144,6 @@ const Purchase = () => {
                   </label>
                   <input
                     className="input input-bordered w-full max-w-xs"
-                    type="text"
                     {...register("address", {
                       required: {
                         value: true,
@@ -192,7 +160,6 @@ const Purchase = () => {
                   </label>
                   <input
                     className="input input-bordered w-full max-w-xs"
-                    type="number"
                     {...register("number", {
                       required: {
                         value: true,
@@ -209,7 +176,6 @@ const Purchase = () => {
                   </label>
                   <input
                     className="input input-bordered w-full max-w-xs"
-                    type="text"
                     {...register("message", {
                       required: {
                         value: true,
@@ -218,6 +184,21 @@ const Purchase = () => {
                   />
                 </div>
 
+                <div className="form-control w-full max-w-xs flex-row items-center mt-4 ">
+                  <label className="label w-full">
+                    <span className="label-text text-accent text-lg font-bold">
+                      Order Quantity:
+                    </span>
+                  </label>
+                  <input
+                    className="input input-bordered w-full max-w-xs"
+                    {...register("quantity", {
+                      required: {
+                        value: true,
+                      },
+                    })}
+                  />
+                </div>
                 <input
                   className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
                   type="submit"

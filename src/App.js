@@ -11,6 +11,10 @@ import Home from "./Components/Pages/Home/Home";
 import NotFound from "./Components/Shared/NotFound";
 import Purchase from "./Components/Pages/Purchase/Purchase";
 import PrivateRoute from "./Components/Authentication/PrivateRoute";
+import Dashboard from "./Components/Pages/Dashboard/Dashboard";
+import MyProfile from "./Components/Pages/Dashboard/MyProfile";
+import AddReview from "./Components/Pages/Dashboard/AddReview";
+import MyOrders from "./Components/Pages/Dashboard/MyOrders";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -28,6 +32,18 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route index element={<MyProfile />} />
+          <Route path="orders" element={<MyOrders />} />
+          <Route path="addreview" element={<AddReview />} />
+        </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />

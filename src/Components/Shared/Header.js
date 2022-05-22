@@ -95,7 +95,17 @@ const Header = ({ dark, setDark }) => {
                 Purchased Items
               </NavLink>
             </li>
-            <li></li>
+            {user && (
+              <li>
+                <Link
+                  className="text-primary font-bold bg-base-100 hover:bg-accent  ml-2 text-lg"
+                  to="/dashboard"
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
+
             <li className="hover:bg-none">
               {user ? (
                 <div>
