@@ -45,6 +45,11 @@ const Header = ({ dark, setDark }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink className="font-bold" to="/purchase">
+                  Purchased Items
+                </NavLink>
+              </li>
+              <li>
                 {user ? (
                   <button onClick={logout} className="btn btn-accent">
                     Sign Out
@@ -83,13 +88,27 @@ const Header = ({ dark, setDark }) => {
               </NavLink>
             </li>
             <li>
+              <NavLink
+                className="text-primary font-bold bg-base-100 hover:bg-accent  ml-2 text-lg"
+                to="/purchase"
+              >
+                Purchased Items
+              </NavLink>
+            </li>
+            <li></li>
+            <li className="hover:bg-none">
               {user ? (
-                <button
-                  onClick={logout}
-                  className="btn btn-accent text-primary font-bold  ml-2 text-lg"
-                >
-                  Sign Out
-                </button>
+                <div>
+                  <p className=" text-accent font-bold  ml-2 text-lg">
+                    {user.displayName}
+                  </p>
+                  <button
+                    onClick={logout}
+                    className="btn btn-accent text-primary font-bold  ml-2 text-lg"
+                  >
+                    Sign Out
+                  </button>
+                </div>
               ) : (
                 <Link
                   className="text-primary font-bold  ml-2 bg-accent border border-accent hover:bg-transparent hover:border-accent text-lg"
@@ -99,6 +118,7 @@ const Header = ({ dark, setDark }) => {
                 </Link>
               )}
             </li>
+
             <label class="swap swap-rotate ml-4">
               <input type="checkbox" onClick={() => setDark(!dark)} />
 

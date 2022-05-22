@@ -9,6 +9,8 @@ import Blogs from "./Components/Pages/Blogs";
 import { useState } from "react";
 import Home from "./Components/Pages/Home/Home";
 import NotFound from "./Components/Shared/NotFound";
+import Purchase from "./Components/Pages/Purchase/Purchase";
+import PrivateRoute from "./Components/Authentication/PrivateRoute";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -18,6 +20,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route
+          path="/purchase/:id"
+          element={
+            <PrivateRoute>
+              <Purchase />
+            </PrivateRoute>
+          }
+        />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
