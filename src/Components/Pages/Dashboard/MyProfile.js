@@ -15,7 +15,16 @@ const MyProfile = () => {
   } = useForm();
   const [userP, setUserP] = useState([]);
   const navigate = useNavigate();
-  console.log(userP);
+
+  useEffect(() => {
+    const email = user.email;
+
+    fetch(`http://localhost:5000/user?email=${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUserP(data);
+      });
+  }, [user]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -38,11 +47,11 @@ const MyProfile = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(),
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
-        setUserP(data);
+        console.log(data);
       });
   };
 
@@ -50,46 +59,36 @@ const MyProfile = () => {
     <Loading />;
   }
 
-  useEffect(() => {
-    const email = user.email;
-
-    fetch(`http://localhost:5000/user?email=${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUserP(data);
-      });
-
-    const education = user.education;
-  }, [user]);
-
   return (
     <div className="flex gap-6 ">
       <div class="card w-96 bg-base-100 shadow-xl">
-        {/* {userP.map((user) => ( */}
-        <div class="card-body">
-          <h2 class="card-title">Your Information</h2>
-          <p className="text-lg font-roboto">
-            <span className="text-accent">Name:</span> {user.displayName}
-          </p>
-          <p className="text-lg font-roboto">
-            <span className="text-accent">Email</span> {user.email}
-          </p>
-          <p className="text-lg font-roboto">
-            <span className="text-accent">University/College/School Name:</span>{" "}
-            {user.education}
-          </p>
-          <p className="text-lg font-roboto">
-            <span className="text-accent">Address:</span> {user.address}
-          </p>
-          <p className="text-lg font-roboto">
-            <span className="text-accent">Phone Number:</span> {user.number}
-          </p>
-          <p className="text-lg font-roboto">
-            <span className="text-accent">LinkedIn Profile Link:</span>{" "}
-            {user.linkedin}
-          </p>
-        </div>
-        {/* ))} */}
+        {userP.map((user) => (
+          <div class="card-body">
+            <h2 class="card-title">Your Information</h2>
+            <p className="text-lg font-roboto">
+              <span className="text-accent">Name:</span> {user.name}
+            </p>
+            <p className="text-lg font-roboto">
+              <span className="text-accent">Email</span> {user.email}
+            </p>
+            <p className="text-lg font-roboto">
+              <span className="text-accent">
+                University/College/School Name:
+              </span>{" "}
+              {user.education}
+            </p>
+            <p className="text-lg font-roboto">
+              <span className="text-accent">Address:</span> {user.address}
+            </p>
+            <p className="text-lg font-roboto">
+              <span className="text-accent">Phone Number:</span> {user.number}
+            </p>
+            <p className="text-lg font-roboto">
+              <span className="text-accent">LinkedIn Profile Link:</span>{" "}
+              {user.linkedin}
+            </p>
+          </div>
+        ))}
       </div>
 
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

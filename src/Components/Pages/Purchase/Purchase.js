@@ -47,9 +47,6 @@ const Purchase = () => {
       return;
     }
 
-    if (quantity > parts.aQuantity) {
-    }
-
     const updateQuantity = { quantity };
 
     fetch(`http://localhost:5000/parts/${id}`, {
