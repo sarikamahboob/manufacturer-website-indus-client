@@ -18,6 +18,8 @@ import MyOrders from "./Components/Pages/Dashboard/MyOrders";
 import Users from "./Components/Pages/Dashboard/Users";
 import RequireAdmin from "./Components/Authentication/RequireAdmin";
 import AddProduct from "./Components/Pages/Dashboard/AddProduct";
+import ManageOrders from "./Components/Pages/Dashboard/ManageOrders";
+import ManageProducts from "./Components/Pages/Dashboard/ManageProducts";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -61,6 +63,22 @@ function App() {
             element={
               <RequireAdmin>
                 <AddProduct />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageorders"
+            element={
+              <RequireAdmin>
+                <ManageOrders />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageproducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
               </RequireAdmin>
             }
           ></Route>

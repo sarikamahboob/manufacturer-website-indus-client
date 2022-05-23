@@ -20,44 +20,52 @@ const Dashboard = () => {
         <div class="drawer-side">
           <label for="dashboard-sidebar" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-48 bg-accent text-base-content ">
-            {/* <!-- Sidebar content here --> */}
-            <li
-              className="bg-white rounded-2xl 
-            "
-            >
-              <Link
-                to="/dashboard"
-                className="text-accent font-bold text-2xl font-saira"
+            {user && (
+              <li
+                className="bg-white rounded-2xl 
+           "
               >
-                Your Profile
-              </Link>
-            </li>
-            <li className="bg-white rounded-2xl mt-4">
-              <Link
-                to="/dashboard/orders"
-                className="text-accent font-bold text-2xl font-saira"
-              >
-                Your Orders
-              </Link>
-            </li>
-            <li className="bg-white rounded-2xl mt-4">
-              <Link
-                to="/dashboard/addreview"
-                className="text-accent font-bold text-2xl font-saira"
-              >
-                Add Review
-              </Link>
-            </li>
+                <Link
+                  to="/dashboard"
+                  className="text-accent font-bold text-2xl font-saira"
+                >
+                  Your Profile
+                </Link>
+              </li>
+            )}
+            {!admin && (
+              <div>
+                <li className="bg-white rounded-2xl mt-4">
+                  <Link
+                    to="/dashboard/orders"
+                    className="text-accent font-bold text-2xl font-saira"
+                  >
+                    Your Orders
+                  </Link>
+                </li>
+                <li className="bg-white rounded-2xl mt-4">
+                  <Link
+                    to="/dashboard/addreview"
+                    className="text-accent font-bold text-2xl font-saira"
+                  >
+                    Add Review
+                  </Link>
+                </li>
+              </div>
+            )}
             {admin && (
               <>
                 <li>
-                  <Link to="/dashboard/users">All Users</Link>
+                  <Link to="/dashboard/users">Make Admin</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/addproduct">Add Product</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/manageDoctor">Manage Doctors</Link>
+                  <Link to="/dashboard/manageorders">Manage Orders</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manageproducts">Manage Parts</Link>
                 </li>
               </>
             )}
