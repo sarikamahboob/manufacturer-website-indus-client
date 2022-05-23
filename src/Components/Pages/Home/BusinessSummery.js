@@ -6,8 +6,8 @@ import icon4 from "../../../Images/icon4.png";
 
 const BusinessSummery = () => {
   return (
-    <div className="flex items-center justify-center my-10 ">
-      <div class="stats shadow bg-accent">
+    <div className=" my-10 container mx-auto ">
+      <div class="stats shadow bg-accent flex items-center justify-center">
         <div class="stat flex items-center justify-center ">
           <div class="stat-figure">
             <img src={icon1} className="w-20" alt="icon1" />

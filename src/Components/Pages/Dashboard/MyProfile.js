@@ -46,7 +46,7 @@ const MyProfile = () => {
   };
 
   if (loading) {
-    <Loading />;
+    return <Loading />;
   }
 
   return (
@@ -63,7 +63,7 @@ const MyProfile = () => {
           <p className="text-lg font-roboto mt-4">
             <span className="text-accent font-bold">Email:</span> {user.email}
           </p>
-          {userP.map((user) => (
+          {/* {userP.map((user) => (
             <div>
               <p className="text-lg font-roboto mt-4">
                 <span className="text-accent font-bold">
@@ -86,7 +86,7 @@ const MyProfile = () => {
                 {user.linkedin}
               </p>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
 

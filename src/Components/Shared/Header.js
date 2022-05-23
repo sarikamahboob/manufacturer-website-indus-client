@@ -8,9 +8,10 @@ const Header = ({ dark, setDark }) => {
   const [user] = useAuthState(auth);
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
   };
   return (
-    <div className="">
+    <div className="bg-secondary">
       <div class="navbar  max-w-7xl mx-auto">
         <div class="navbar-start">
           <div class="dropdown">
@@ -23,9 +24,9 @@ const Header = ({ dark, setDark }) => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
@@ -73,7 +74,7 @@ const Header = ({ dark, setDark }) => {
           <ul class="menu menu-horizontal p-0 font-roboto">
             <li>
               <NavLink
-                className="text-primary font-bold bg-base-100 hover:bg-accent text-lg "
+                className="text-white font-bold hover:text-accent text-lg "
                 to="/"
               >
                 Home
@@ -81,28 +82,20 @@ const Header = ({ dark, setDark }) => {
             </li>
             <li>
               <NavLink
-                className="text-primary font-bold bg-base-100 hover:bg-accent  ml-2 text-lg"
+                className="text-white font-bold hover:text-accent text-lg "
                 to="/blogs"
               >
                 Blogs
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className="text-primary font-bold bg-base-100 hover:bg-accent  ml-2 text-lg"
-                to="/purchase"
-              >
-                Purchased Items
-              </NavLink>
-            </li>
             {user && (
               <li>
-                <Link
-                  className="text-primary font-bold bg-base-100 hover:bg-accent  ml-2 text-lg"
+                <NavLink
+                  className="text-white font-bold hover:text-accent text-lg  "
                   to="/dashboard"
                 >
                   Dashboard
-                </Link>
+                </NavLink>
               </li>
             )}
 
@@ -120,12 +113,12 @@ const Header = ({ dark, setDark }) => {
                   </button>
                 </div>
               ) : (
-                <Link
+                <NavLink
                   className="text-primary font-bold  ml-2 bg-accent border border-accent hover:bg-transparent hover:border-accent text-lg"
                   to="/signin"
                 >
                   Sign In
-                </Link>
+                </NavLink>
               )}
             </li>
 

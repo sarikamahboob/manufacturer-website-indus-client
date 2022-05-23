@@ -26,7 +26,7 @@ const Parts = () => {
   //       .then((data) => setParts(data));
   //   }, []);
   return (
-    <div className="my-12 px-14 flex items-center justify-center ">
+    <div className="my-12 container mx-auto ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 ">
         {parts.map((part) => (
           <Part key={part._id} part={part} refetch={refetch}></Part>

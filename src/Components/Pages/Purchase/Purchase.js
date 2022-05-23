@@ -28,9 +28,7 @@ const Purchase = () => {
 
   const onSubmit = (data) => {
     const inputQuantity = data.quantity;
-    const quantity =
-      parseInt(inputQuantity) + parseInt(parts.quantity) ||
-      parseInt(inputQuantity) - parseInt(parts.quantity);
+    const quantity = parseInt(inputQuantity) + parseInt(parts.quantity);
 
     if (quantity < 0) {
       setError("You have to purchase more than minimum order quantity");
@@ -44,7 +42,6 @@ const Purchase = () => {
 
     if (quantity > parts.aQuantity) {
       setError("You can't purchase product more than available quantity");
-
       return;
     }
 
@@ -59,7 +56,6 @@ const Purchase = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setIsReload(!isReload);
         setError(" ");
       });
@@ -70,7 +66,7 @@ const Purchase = () => {
       quantity: quantity,
       price: parts.price,
       userName: user.displayName,
-      userEmail: user.email,
+      email: user.email,
       number: data.number,
       message: data.message,
       address: data.address,
@@ -92,31 +88,33 @@ const Purchase = () => {
   return (
     <div>
       <div class="hero min-h-screen">
-        <div class="hero-content flex-col lg:flex-row">
-          <div class="text-center lg:text-left">
+        <div class="hero-content flex-col lg:flex-row ">
+          <div class="text-center lg:text-left px-4">
             <figure>
               <img src={parts.image} alt="Shoes" className="w-80" />
             </figure>
-            <h1 class="text-5xl font-bold">{parts.name}</h1>
-            <p className="font-roboto text-neutral">{parts.description}</p>
-            <p className="font-roboto text-neutral">
-              <span className="font-bold text-secondary">Order Quantity:</span>{" "}
+            <h1 class="text-5xl font-bold mt-4">{parts.name}</h1>
+            <p className="font-roboto text-neutral mt-4 text-justify">
+              {parts.description}
+            </p>
+            <p className="font-roboto text-neutral  mt-2">
+              <span className="font-bold text-accent mt-4">
+                Order Quantity:
+              </span>{" "}
               {parts.quantity}
             </p>
-            <p className="font-roboto text-neutral">
-              <span className="font-bold text-secondary">
+            <p className="font-roboto text-neutral  mt-2">
+              <span className="font-bold text-accent">
                 Minimum Quantity Order:
               </span>{" "}
               {parts.mQuantity}
             </p>
-            <p className="font-roboto text-neutral">
-              <span className="font-bold text-secondary">
-                Available Quantity:
-              </span>{" "}
+            <p className="font-roboto text-neutral  mt-2 ">
+              <span className="font-bold text-accent">Available Quantity:</span>{" "}
               {parts.aQuantity}
             </p>
-            <p className="font-roboto text-neutral">
-              <span className="font-bold text-secondary">Price:</span> $
+            <p className="font-roboto text-neutral  mt-2">
+              <span className="font-bold text-accent">Price:</span> $
               {parts.price}
             </p>
           </div>
@@ -214,6 +212,7 @@ const Purchase = () => {
                   </label>
                   <input
                     className="input input-bordered w-full max-w-xs"
+                    type="number"
                     {...register("quantity", {
                       required: {
                         value: true,
