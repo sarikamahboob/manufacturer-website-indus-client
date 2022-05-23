@@ -8,6 +8,7 @@ import Loading from "../../Shared/Loading";
 
 const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
+  const [isReload, setIsReload] = useState(false);
   const {
     register,
     formState: { errors },
@@ -24,23 +25,11 @@ const MyProfile = () => {
       .then((data) => {
         setUserP(data);
       });
-  }, [user]);
+  }, [user, isReload]);
 
   const onSubmit = (data) => {
     console.log(data);
     const email = user.email;
-    // fetch(`http://localhost:5000/user`, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setUserP(data);
-    //   });
 
     fetch(`http://localhost:5000/user/${email}`, {
       method: "PUT",
@@ -52,6 +41,7 @@ const MyProfile = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setIsReload(!isReload);
       });
   };
 
@@ -61,39 +51,50 @@ const MyProfile = () => {
 
   return (
     <div className="flex gap-6 ">
-      <div class="card w-96 bg-base-100 shadow-xl">
-        {userP.map((user) => (
-          <div class="card-body">
-            <h2 class="card-title">Your Information</h2>
-            <p className="text-lg font-roboto">
-              <span className="text-accent">Name:</span> {user.name}
-            </p>
-            <p className="text-lg font-roboto">
-              <span className="text-accent">Email</span> {user.email}
-            </p>
-            <p className="text-lg font-roboto">
-              <span className="text-accent">
-                University/College/School Name:
-              </span>{" "}
-              {user.education}
-            </p>
-            <p className="text-lg font-roboto">
-              <span className="text-accent">Address:</span> {user.address}
-            </p>
-            <p className="text-lg font-roboto">
-              <span className="text-accent">Phone Number:</span> {user.number}
-            </p>
-            <p className="text-lg font-roboto">
-              <span className="text-accent">LinkedIn Profile Link:</span>{" "}
-              {user.linkedin}
-            </p>
-          </div>
-        ))}
+      <div class="card w-96 bg-base-100 shadow-xl p-6 ml-6">
+        <div class="">
+          <h2 class="card-title font-saira text-accent text-2xl font-bold text-center">
+            Your Information
+          </h2>
+          <p className="text-lg font-roboto mt-4">
+            <span className="text-accent font-bold">Name:</span>{" "}
+            {user.displayName}
+          </p>
+          <p className="text-lg font-roboto mt-4">
+            <span className="text-accent font-bold">Email:</span> {user.email}
+          </p>
+          {userP.map((user) => (
+            <div>
+              <p className="text-lg font-roboto mt-4">
+                <span className="text-accent font-bold">
+                  University/College/School Name:
+                </span>{" "}
+                {user.education}
+              </p>
+              <p className="text-lg font-roboto mt-4">
+                <span className="text-accent font-bold">Address:</span>{" "}
+                {user.address}
+              </p>
+              <p className="text-lg font-roboto mt-4">
+                <span className="text-accent font-bold">Phone Number:</span>{" "}
+                {user.number}
+              </p>
+              <p className="text-lg font-roboto mt-4">
+                <span className="text-accent font-bold">
+                  LinkedIn Profile Link:
+                </span>{" "}
+                {user.linkedin}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <div class="card-body">
-          <h2 class="card-title">Add Info</h2>
+          <h2 class="card-title font-saira text-accent text-2xl font-bold text-center">
+            Add Info
+          </h2>
           <form onSubmit={handleSubmit(onSubmit)} className="font-roboto">
             <div className="form-control w-full max-w-xs">
               <label className="label">

@@ -44,6 +44,7 @@ const Purchase = () => {
 
     if (quantity > parts.aQuantity) {
       setError("You can't purchase product more than available quantity");
+
       return;
     }
 
@@ -61,6 +62,30 @@ const Purchase = () => {
         console.log(data);
         setIsReload(!isReload);
         setError(" ");
+      });
+
+    const allData = {
+      image: parts.image,
+      name: parts.name,
+      quantity: quantity,
+      price: parts.price,
+      userName: user.displayName,
+      userEmail: user.email,
+      number: data.number,
+      message: data.message,
+      address: data.address,
+    };
+    console.log(allData);
+    fetch(`http://localhost:5000/orders`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(allData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       });
   };
 
@@ -196,6 +221,7 @@ const Purchase = () => {
                     })}
                   />
                 </div>
+                {error}
                 <input
                   className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
                   type="submit"
