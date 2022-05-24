@@ -20,6 +20,7 @@ import RequireAdmin from "./Components/Authentication/RequireAdmin";
 import AddProduct from "./Components/Pages/Dashboard/AddProduct";
 import ManageOrders from "./Components/Pages/Dashboard/ManageOrders";
 import ManageProducts from "./Components/Pages/Dashboard/ManageProducts";
+import Payment from "./Components/Pages/Dashboard/Payment";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -49,7 +50,7 @@ function App() {
           <Route path="orders" element={<MyOrders />} />
           <Route path="addreview" element={<AddReview />} />
           <Route path="addreview" element={<AddReview />} />
-          {/* <Route path="payment/:id" element={<Payment></Payment>}></Route> */}
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route
             path="users"
             element={

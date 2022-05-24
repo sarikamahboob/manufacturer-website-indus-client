@@ -37,6 +37,9 @@ const ManageOrders = () => {
               <th>Parts Name</th>
               <th>Quantity</th>
               <th>Price</th>
+              <th>Payment Status</th>
+              <th>Order Status</th>
+              <th>Delete Order</th>
             </tr>
           </thead>
           <tbody>

@@ -1,7 +1,25 @@
 import React, { useState } from "react";
+import { useQuery } from "react-query";
+import Loading from "../../Shared/Loading";
 
-const AllOrders = ({ order, index, refetch, setDeletingOrder }) => {
-  const { userName, email, number, name, quantity, price } = order;
+const AllOrders = ({ order, index, setDeletingOrder, refetch }) => {
+  const { _id, userName, email, number, name, quantity, price, paid, status } =
+    order;
+
+  const handleOrderStatus = () => {
+    fetch(`http://localhost:5000/allorder/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        console.log(data);
+      });
+  };
 
   return (
     <tr>
@@ -13,13 +31,31 @@ const AllOrders = ({ order, index, refetch, setDeletingOrder }) => {
       <td>{quantity}</td>
       <td>${price}</td>
       <td>
-        <label
-          onClick={() => setDeletingOrder(order)}
-          for="delete-confirm-modal"
-          class="btn btn-xs btn-error"
-        >
-          Delete
-        </label>
+        {!paid && <button className="btn btn-success btn-xs">Unpaid</button>}
+      </td>
+      <td>
+        {paid &&
+          (status ? (
+            <button className="btn btn-success btn-xs">Shipped</button>
+          ) : (
+            <button
+              onClick={() => handleOrderStatus()}
+              className="btn btn-accent btn-xs"
+            >
+              Pending
+            </button>
+          ))}
+      </td>
+      <td>
+        {!paid && (
+          <label
+            onClick={() => setDeletingOrder(order)}
+            for="delete-confirm-modal"
+            class="btn btn-xs btn-error"
+          >
+            Delete
+          </label>
+        )}
       </td>
     </tr>
   );

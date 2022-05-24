@@ -80,7 +80,7 @@ const MyOrders = () => {
                   {order.price && !order.paid && (
                     <div>
                       <Link to={`/dashboard/payment/${order._id}`}>
-                        <button className="btn btn-xs btn-success">Pay</button>
+                        <button className="btn btn-xs btn-access">Pay</button>
                       </Link>
                       <label
                         for="delete-modal"
