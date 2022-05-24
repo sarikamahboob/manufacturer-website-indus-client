@@ -55,17 +55,37 @@ const Dashboard = () => {
             )}
             {admin && (
               <>
-                <li>
-                  <Link to="/dashboard/users">Make Admin</Link>
+                <li className="bg-white rounded-2xl mt-4">
+                  <Link
+                    className="text-accent font-bold text-2xl font-saira"
+                    to="/dashboard/users"
+                  >
+                    Make Admin
+                  </Link>
                 </li>
-                <li>
-                  <Link to="/dashboard/addproduct">Add Product</Link>
+                <li className="bg-white rounded-2xl mt-4">
+                  <Link
+                    className="text-accent font-bold text-2xl font-saira"
+                    to="/dashboard/addproduct"
+                  >
+                    Add Product
+                  </Link>
                 </li>
-                <li>
-                  <Link to="/dashboard/manageorders">Manage Orders</Link>
+                <li className="bg-white rounded-2xl mt-4">
+                  <Link
+                    className="text-accent font-bold text-2xl font-saira"
+                    to="/dashboard/manageorders"
+                  >
+                    Manage Orders
+                  </Link>
                 </li>
-                <li>
-                  <Link to="/dashboard/manageproducts">Manage Parts</Link>
+                <li className="bg-white rounded-2xl mt-4">
+                  <Link
+                    className="text-accent font-bold text-2xl font-saira"
+                    to="/dashboard/manageproducts"
+                  >
+                    Manage Parts
+                  </Link>
                 </li>
               </>
             )}
