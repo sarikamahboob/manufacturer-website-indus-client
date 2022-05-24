@@ -33,8 +33,6 @@ const MyProfile = () => {
     }).then((res) => res.json())
   );
 
-  console.log(users);
-
   // useEffect(() => {
   //   const email = user.email;
 

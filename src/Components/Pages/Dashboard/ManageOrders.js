@@ -45,7 +45,7 @@ const ManageOrders = () => {
           <tbody>
             {orders.map((order, index) => (
               <AllOrders
-                key={order._key}
+                key={order._id}
                 order={order}
                 index={index}
                 refetch={refetch}

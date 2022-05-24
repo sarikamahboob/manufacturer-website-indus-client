@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import Loading from "../../Shared/Loading";
 
 const AllOrders = ({ order, index, setDeletingOrder, refetch }) => {
   const { _id, userName, email, number, name, quantity, price, paid, status } =
