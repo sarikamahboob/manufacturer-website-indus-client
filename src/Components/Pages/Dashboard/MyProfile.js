@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
@@ -13,19 +14,40 @@ const MyProfile = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
   const [userP, setUserP] = useState([]);
   const navigate = useNavigate();
+  const email = user.email;
 
-  useEffect(() => {
-    const email = user.email;
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
+    fetch(`http://localhost:5000/users?email=${email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
 
-    fetch(`http://localhost:5000/user?email=${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUserP(data);
-      });
-  }, [user, isReload]);
+  console.log(users);
+
+  // useEffect(() => {
+  //   const email = user.email;
+
+  //   fetch(`http://localhost:5000/user?email=${email}`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUserP(data);
+  //     });
+  // }, [user, isReload]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -41,11 +63,13 @@ const MyProfile = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        refetch();
+        reset();
         setIsReload(!isReload);
       });
   };
 
-  if (loading) {
+  if (isLoading) {
     return <Loading />;
   }
 
@@ -63,7 +87,7 @@ const MyProfile = () => {
           <p className="text-lg font-roboto mt-4">
             <span className="text-accent font-bold">Email:</span> {user.email}
           </p>
-          {/* {userP.map((user) => (
+          {users.map((user) => (
             <div>
               <p className="text-lg font-roboto mt-4">
                 <span className="text-accent font-bold">
@@ -81,12 +105,12 @@ const MyProfile = () => {
               </p>
               <p className="text-lg font-roboto mt-4">
                 <span className="text-accent font-bold">
-                  LinkedIn Profile Link:
-                </span>{" "}
+                  Linked Profile Link:
+                </span>
                 {user.linkedin}
               </p>
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
 
