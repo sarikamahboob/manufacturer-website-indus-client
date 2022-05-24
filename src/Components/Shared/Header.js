@@ -46,6 +46,11 @@ const Header = ({ dark, setDark }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink className="font-bold" to="/portfolio">
+                  Portfolio
+                </NavLink>
+              </li>
+              <li>
                 <NavLink className="font-bold" to="/purchase">
                   Purchased Items
                 </NavLink>
@@ -88,6 +93,14 @@ const Header = ({ dark, setDark }) => {
                 Blogs
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                className="text-white font-bold hover:text-accent text-lg "
+                to="/portfolio"
+              >
+                Portfolio
+              </NavLink>
+            </li>
             {user && (
               <li>
                 <NavLink
@@ -122,7 +135,7 @@ const Header = ({ dark, setDark }) => {
               )}
             </li>
 
-            <label class="swap swap-rotate ml-4">
+            <label class="swap swap-rotate ml-10">
               <input type="checkbox" onClick={() => setDark(!dark)} />
 
               <svg

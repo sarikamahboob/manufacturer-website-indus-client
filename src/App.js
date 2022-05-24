@@ -21,6 +21,7 @@ import AddProduct from "./Components/Pages/Dashboard/AddProduct";
 import ManageOrders from "./Components/Pages/Dashboard/ManageOrders";
 import ManageProducts from "./Components/Pages/Dashboard/ManageProducts";
 import Payment from "./Components/Pages/Dashboard/Payment";
+import Portfolio from "./Components/Pages/Portfolio/Portfolio";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route
           path="/purchase/:id"
           element={
