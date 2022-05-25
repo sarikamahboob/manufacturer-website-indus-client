@@ -28,29 +28,29 @@ const MyOrders = () => {
     }).then((res) => res.json())
   );
 
-  useEffect(() => {
-    const email = user.email;
+  // useEffect(() => {
+  //   const email = user.email;
 
-    try {
-      // fetch(`http://localhost:5000/orders?email=${email}`, {
-      //   headers: {
-      //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      //   },
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     setUserOrders(data);
-      //     setIsReload(!isReload);
-      //     console.log(data);
-      //   });
-    } catch (error) {
-      console.log(error.message);
-      if (error.response.status === 401 || error.response.status === 403) {
-        signOut(auth);
-        navigate("/login");
-      }
-    }
-  }, [user]);
+  //   try {
+  //     // fetch(`http://localhost:5000/orders?email=${email}`, {
+  //     //   headers: {
+  //     //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     //   },
+  //     // })
+  //     //   .then((res) => res.json())
+  //     //   .then((data) => {
+  //     //     setUserOrders(data);
+  //     //     setIsReload(!isReload);
+  //     //     console.log(data);
+  //     //   });
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     if (error.response.status === 401 || error.response.status === 403) {
+  //       signOut(auth);
+  //       navigate("/login");
+  //     }
+  //   }
+  // }, [user]);
 
   if (isLoading) {
     return <Loading />;

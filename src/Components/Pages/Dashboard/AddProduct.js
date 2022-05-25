@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useQuery } from "react-query";
 import { toast, ToastContainer } from "react-toastify";
 import Loading from "../../Shared/Loading";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,12 +13,6 @@ const AddProduct = () => {
   } = useForm();
 
   const imageStorageKey = "6719f6b5725af1d9d06b7ade98eebe6d";
-
-  //   const { data: services, isLoading } = useQuery("services", () =>
-  //     fetch("https://secret-dusk-46242.herokuapp.com/service").then((res) =>
-  //       res.json()
-  //     )
-  //   );
 
   const onSubmit = (data) => {
     console.log(data);
@@ -44,7 +37,7 @@ const AddProduct = () => {
             price: data.price,
             image: img,
           };
-          // send to your database
+
           fetch("http://localhost:5000/parts", {
             method: "POST",
             headers: {
@@ -65,10 +58,6 @@ const AddProduct = () => {
         }
       });
   };
-
-  //   if (isLoading) {
-  //     return <Loading></Loading>;
-  //   }
 
   return (
     <div className="container mx-auto">

@@ -23,8 +23,8 @@ const ManageProducts = () => {
   }
   return (
     <div>
-      <h2 className="text-2xl font-bold text-center my-8 text-accent font-saira ">
-        All The Users
+      <h2 className="font-saira text-accent text-4xl text-center font-bold my-14">
+        All The Products !!!
       </h2>
       <div class="overflow-x-auto">
         <table class="table w-full">
