@@ -23,7 +23,7 @@ const ManageOrders = () => {
   }
   return (
     <div>
-      <h1 className="font-saira text-accent text-4xl text-center font-bold my-14">
+      <h1 className="font-saira text-accent text-3xl text-center font-bold my-14">
         All Client Orders
       </h1>
       <div class="overflow-x-auto">

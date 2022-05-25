@@ -179,7 +179,7 @@ const Blogs = () => {
             given problem is like nested array of objects.For this problem, the
             recommended solution is to use the find() method that returns the
             first occurrence of an element in the array that satisfies the given
-            predicate. If we do " object.find(e => e.name === "name of the
+            predicate. If we do " object.find(e = e.name === "name of the
             product") " by this we can find the products by name. Alternative ,
             we can use findIndex method or foreach or filter method for
             searching the products by name.That's how we can find a product from

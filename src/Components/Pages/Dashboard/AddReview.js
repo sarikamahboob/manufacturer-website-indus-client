@@ -32,6 +32,9 @@ const AddReview = () => {
   };
   return (
     <div className="container mx-auto px-4">
+      <h1 className="text-3xl font-bold text-center my-8 text-accent font-saira ">
+        Add Your Review
+      </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="font-roboto ">
         <div className="form-control w-full max-w-xs flex-row">
           <label className="label">

@@ -16,8 +16,8 @@ const Reviews = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className="container mx-auto mt-10 ">
-      <h1 class="font-saira text-accent text-4xl text-center font-bold my-10">
+    <div className="container mx-auto my-10">
+      <h1 class="font-saira text-accent text-4xl text-center font-bold my-24">
         Our Valuable Clients Reviews
       </h1>
       {reviews.map((review, index) => (

@@ -66,11 +66,6 @@ const Header = ({ dark, setDark }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="font-bold" to="/aboutus">
-                  About Us
-                </NavLink>
-              </li>
-              <li>
                 {user ? (
                   <button onClick={logout} className="btn btn-accent">
                     Sign Out

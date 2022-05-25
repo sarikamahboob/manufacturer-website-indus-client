@@ -22,6 +22,9 @@ const Parts = () => {
 
   return (
     <div className="my-12 container mx-auto ">
+      <h1 className="font-saira text-accent text-4xl text-center font-bold my-24">
+        Our Best Selling Parts
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 ">
         {parts.slice(-6).map((part) => (
           <Part key={part._id} part={part} refetch={refetch}></Part>

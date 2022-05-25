@@ -6,7 +6,7 @@ import icon4 from "../../../Images/icon4.png";
 
 const BusinessSummery = () => {
   return (
-    <div className=" my-10 container mx-auto ">
+    <div className=" my-24 container mx-auto ">
       <div class="stats shadow bg-accent flex items-center justify-center">
         <div class="stat flex items-center justify-center ">
           <div class="stat-figure">

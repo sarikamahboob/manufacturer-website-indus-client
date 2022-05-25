@@ -61,6 +61,9 @@ const AddProduct = () => {
 
   return (
     <div className="container mx-auto">
+      <h1 className="text-3xl font-bold text-center my-8 text-accent font-saira ">
+        Add Product
+      </h1>
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-10">
         <div class="card-body">
           <h2 className="text-2xl font-bold text-center my-8 text-accent font-saira ">

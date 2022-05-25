@@ -7,7 +7,7 @@ import teamfour from "../../../Images/teamfour.jpg";
 const Team = () => {
   return (
     <div>
-      <h1 className="font-saira text-accent text-4xl text-center font-bold my-14">
+      <h1 className="font-saira text-accent text-4xl text-center font-bold my-24">
         Meat Our Team
       </h1>
       <div

@@ -9,7 +9,6 @@ import DeleteModal from "./DeleteModal";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
-  const [isReload, setIsReload] = useState(false);
   const [userOrders, setUserOrders] = useState([]);
   const navigate = useNavigate();
   const [deleteOrder, setDeleteOrder] = useState(null);
@@ -58,6 +57,9 @@ const MyOrders = () => {
 
   return (
     <div>
+      <h1 className="text-3xl font-bold text-center my-8 text-accent font-saira ">
+        Your All Orders
+      </h1>
       <div class="overflow-x-auto">
         <table class="table w-full font-roboto">
           <thead>

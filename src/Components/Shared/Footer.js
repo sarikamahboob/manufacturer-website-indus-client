@@ -120,48 +120,50 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <footer class="footer flex items-center justify-between px-10 py-4 border-t border-base-100 text-base-content ">
-        <div class="items-center grid-flow-col">
-          <div>
-            <p className=" text-white font-saira text-base">
-              Indus © Sarika Mahboob 2022. All Rights Reserved
-            </p>
+      <footer class="footer px-10 py-4 border-t border-base-100 text-base-content ">
+        <div className="container mx-auto flex items-center justify-between">
+          <div class="items-center grid-flow-col">
+            <div>
+              <p className=" text-white font-saira text-base">
+                Indus © Sarika Mahboob 2022. All Rights Reserved
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="md:place-self-center md:justify-self-end">
-          <div class="grid grid-flow-col gap-4">
-            <a
-              href="#"
-              className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
-            >
-              <span className="text-lg   ">
-                <FaFacebookF />
-              </span>
-            </a>
-            <a
-              href="#"
-              className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
-            >
-              <span className="text-lg">
-                <AiFillInstagram />
-              </span>
-            </a>
-            <a
-              href="#"
-              className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
-            >
-              <span className=" text-lg">
-                <FaTwitter />
-              </span>
-            </a>
-            <a
-              href="#"
-              className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
-            >
-              <span className="text-lg">
-                <FaLinkedinIn />
-              </span>
-            </a>
+          <div class="md:place-self-center md:justify-self-end">
+            <div class="grid grid-flow-col gap-4">
+              <a
+                href="#"
+                className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
+              >
+                <span className="text-lg   ">
+                  <FaFacebookF />
+                </span>
+              </a>
+              <a
+                href="#"
+                className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
+              >
+                <span className="text-lg">
+                  <AiFillInstagram />
+                </span>
+              </a>
+              <a
+                href="#"
+                className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
+              >
+                <span className=" text-lg">
+                  <FaTwitter />
+                </span>
+              </a>
+              <a
+                href="#"
+                className=" border p-2 rounded-[50%] border-accent text-accent hover:bg-accent hover:text-white transition hover:ease-in-out"
+              >
+                <span className="text-lg">
+                  <FaLinkedinIn />
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </footer>
