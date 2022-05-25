@@ -22,6 +22,8 @@ import ManageOrders from "./Components/Pages/Dashboard/ManageOrders";
 import ManageProducts from "./Components/Pages/Dashboard/ManageProducts";
 import Payment from "./Components/Pages/Dashboard/Payment";
 import Portfolio from "./Components/Pages/Portfolio/Portfolio";
+import AboutUs from "./Components/Pages/AboutUs/AboutUs";
+import CustomerService from "./Components/Pages/CustomerService/CustomerService";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -32,6 +34,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/customerservice" element={<CustomerService />} />
         <Route
           path="/purchase/:id"
           element={

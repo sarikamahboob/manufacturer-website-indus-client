@@ -33,11 +33,13 @@ const Purchase = () => {
     const qquantity = parseInt(event.target.value);
     console.log(qquantity);
     if (qquantity < parts.mQuantity) {
-      setError("You have to purchase product more than minimum order quantity");
+      setError(
+        "You have to purchase product more than our minimum order quantity"
+      );
       setDisabled(true);
       return;
     } else if (qquantity > parts.aQuantity) {
-      setError("You can't purchase product more than available quantity");
+      setError("You can't purchase product more than our available quantity");
       setDisabled(true);
       return;
     } else if (qquantity <= parts.aQuantity && qquantity >= parts.mQuantity) {
@@ -106,7 +108,7 @@ const Purchase = () => {
       .then((data) => {
         console.log(data);
         if (data.success) {
-          toast.success(`You order is taken !!!`);
+          toast.success(`Your order is taken !!!`);
         } else {
           toast.error(`You already ordered this product !!!`);
         }
@@ -226,13 +228,13 @@ const Purchase = () => {
                     name="quantity"
                   />
                 </div>
-                {error}
+                <p className="text-error mt-2">{error}</p>
                 <button
                   className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
                   // disabled={error && true}
                   disabled={disabled && true}
                 >
-                  Sign Up
+                  Purchase
                 </button>
               </form>
             </div>

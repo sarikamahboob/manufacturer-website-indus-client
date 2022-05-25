@@ -51,8 +51,23 @@ const Header = ({ dark, setDark }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="font-bold" to="/purchase">
-                  Purchased Items
+                <NavLink className="font-bold" to="/aboutus">
+                  About Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="font-bold" to="/customerservice">
+                  Customer service
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="font-bold" to="/dashboard">
+                  Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="font-bold" to="/aboutus">
+                  About Us
                 </NavLink>
               </li>
               <li>
@@ -99,6 +114,22 @@ const Header = ({ dark, setDark }) => {
                 to="/portfolio"
               >
                 Portfolio
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="text-white font-bold hover:text-accent text-lg "
+                to="/aboutus"
+              >
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="text-white font-bold hover:text-accent text-lg "
+                to="/customerservice"
+              >
+                Customer Service
               </NavLink>
             </li>
             {user && (
