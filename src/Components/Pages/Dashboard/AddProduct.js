@@ -38,6 +38,7 @@ const AddProduct = () => {
           const parts = {
             name: data.name,
             description: data.description,
+            quantity: "",
             mQuantity: data.mQuantity,
             aQuantity: data.aQuantity,
             price: data.price,

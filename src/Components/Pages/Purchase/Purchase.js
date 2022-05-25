@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../../firebase.init";
+import "react-toastify/dist/ReactToastify.css";
 
 const Purchase = () => {
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const Purchase = () => {
   const [isReload, setIsReload] = useState(false);
   const [error, setError] = useState("");
   const [quantity, setQuanity] = useState(" ");
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/parts/${id}`)
@@ -26,39 +29,59 @@ const Purchase = () => {
       .then((data) => setParts(data));
   }, [isReload]);
 
-  const onSubmit = (data) => {
-    const inputQuantity = data.quantity;
-    const quantity = parseInt(inputQuantity) + parseInt(parts.quantity);
-
-    if (quantity < 0) {
-      setError("You have to purchase more than minimum order quantity");
+  const myFunction = (event) => {
+    const qquantity = parseInt(event.target.value);
+    console.log(qquantity);
+    if (qquantity < parts.mQuantity) {
+      setError("You have to purchase product more than minimum order quantity");
+      setDisabled(true);
       return;
-    }
-
-    if (quantity < parts.mQuantity) {
-      setError("You have to purchase more than minimum order quantity");
-      return;
-    }
-
-    if (quantity > parts.aQuantity) {
+    } else if (qquantity > parts.aQuantity) {
       setError("You can't purchase product more than available quantity");
+      setDisabled(true);
       return;
+    } else if (qquantity <= parts.aQuantity && qquantity >= parts.mQuantity) {
+      setError(" ");
+      setDisabled(false);
     }
+  };
 
-    const updateQuantity = { quantity };
+  const handleOrder = (event) => {
+    event.preventDefault();
+    const quantity = event.target.quantity.value;
+    const number = event.target.number.value;
+    const address = event.target.address.value;
+    const message = event.target.message.value;
 
-    fetch(`http://localhost:5000/parts/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateQuantity),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setIsReload(!isReload);
-        setError(" ");
-      });
+    // if (quantity < 0) {
+    //   setError("You have to purchase more than minimum order quantity");
+    //   return;
+    // }
+
+    // if (quantity < parts.mQuantity) {
+    //   setError("You have to purchase product more than minimum order quantity");
+    //   return;
+    // }
+
+    // if (quantity > parts.aQuantity) {
+    //   setError("You can't purchase product more than available quantity");
+    //   return;
+    // }
+
+    // const updateQuantity = { quantity };
+
+    // fetch(`http://localhost:5000/parts/${id}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(updateQuantity),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setIsReload(!isReload);
+    //     setError(" ");
+    //   });
 
     const allData = {
       image: parts.image,
@@ -67,9 +90,9 @@ const Purchase = () => {
       price: parts.price,
       userName: user.displayName,
       email: user.email,
-      number: data.number,
-      message: data.message,
-      address: data.address,
+      number: number,
+      message: message,
+      address: address,
     };
     console.log(allData);
     fetch(`http://localhost:5000/orders`, {
@@ -82,6 +105,13 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.success) {
+          toast.success(`You order is taken !!!`);
+        } else {
+          toast.error(`You already ordered this product !!!`);
+        }
+        setIsReload(!isReload);
+        event.target.reset();
       });
   };
 
@@ -96,12 +126,6 @@ const Purchase = () => {
             <h1 class="text-5xl font-bold mt-4">{parts.name}</h1>
             <p className="font-roboto text-neutral mt-4 text-justify">
               {parts.description}
-            </p>
-            <p className="font-roboto text-neutral  mt-2">
-              <span className="font-bold text-accent mt-4">
-                Order Quantity:
-              </span>{" "}
-              {parts.quantity}
             </p>
             <p className="font-roboto text-neutral  mt-2">
               <span className="font-bold text-accent">
@@ -121,7 +145,7 @@ const Purchase = () => {
 
           <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div class="card-body">
-              <form onSubmit={handleSubmit(onSubmit)} className="font-roboto">
+              <form onSubmit={handleOrder} className="font-roboto">
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
                     <span className="label-text text-accent text-lg font-bold">
@@ -131,11 +155,8 @@ const Purchase = () => {
                   <input
                     className="input input-bordered w-full max-w-xs"
                     disabled
+                    name="name"
                     value={user.displayName}
-                    {...register("name", {
-                      required: true,
-                      value: user.displayName,
-                    })}
                   />
                 </div>
 
@@ -148,11 +169,8 @@ const Purchase = () => {
                   <input
                     className="input input-bordered w-full max-w-xs"
                     disabled
+                    name="email"
                     value={user.email}
-                    {...register("email", {
-                      required: true,
-                      value: user.email,
-                    })}
                   />
                 </div>
 
@@ -164,11 +182,8 @@ const Purchase = () => {
                   </label>
                   <input
                     className="input input-bordered w-full max-w-xs"
-                    {...register("address", {
-                      required: {
-                        value: true,
-                      },
-                    })}
+                    type="text"
+                    name="address"
                   />
                 </div>
 
@@ -180,11 +195,8 @@ const Purchase = () => {
                   </label>
                   <input
                     className="input input-bordered w-full max-w-xs"
-                    {...register("number", {
-                      required: {
-                        value: true,
-                      },
-                    })}
+                    type="text"
+                    name="number"
                   />
                 </div>
 
@@ -196,11 +208,8 @@ const Purchase = () => {
                   </label>
                   <input
                     className="input input-bordered w-full max-w-xs"
-                    {...register("message", {
-                      required: {
-                        value: true,
-                      },
-                    })}
+                    type="text"
+                    name="message"
                   />
                 </div>
 
@@ -211,26 +220,26 @@ const Purchase = () => {
                     </span>
                   </label>
                   <input
+                    onChange={myFunction}
                     className="input input-bordered w-full max-w-xs"
                     type="number"
-                    {...register("quantity", {
-                      required: {
-                        value: true,
-                      },
-                    })}
+                    name="quantity"
                   />
                 </div>
                 {error}
-                <input
+                <button
                   className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
-                  type="submit"
-                  value="Purchase"
-                />
+                  // disabled={error && true}
+                  disabled={disabled && true}
+                >
+                  Sign Up
+                </button>
               </form>
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
