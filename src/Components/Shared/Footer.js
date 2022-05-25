@@ -13,14 +13,14 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <div
-      className="mt-12"
+      className="mt-12 "
       style={{
         backgroundImage: `url(${footer})`,
         backgroundSize: "cover",
       }}
     >
-      <footer class="footer p-10 text-secondary text-base font-roboto">
-        <div className="">
+      <footer class="footer p-10 text-secondary text-base font-roboto container mx-auto">
+        <div className=" ">
           <span class="font-saira text-2xl font-extrabold text-accent">
             About Us
           </span>
