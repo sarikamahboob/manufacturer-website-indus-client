@@ -14,7 +14,7 @@ const DeleteModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
 
   useEffect(() => {
     const email = user.email;
-    fetch(`http://localhost:5000/orders?email=${email}`, {
+    fetch(`https://dry-springs-42288.herokuapp.com/orders?email=${email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -27,7 +27,7 @@ const DeleteModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
   }, [user, navigate]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/orders/${id}`, {
+    fetch(`https://dry-springs-42288.herokuapp.com/orders/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

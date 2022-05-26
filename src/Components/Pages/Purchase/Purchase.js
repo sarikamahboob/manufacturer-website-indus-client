@@ -24,7 +24,7 @@ const Purchase = () => {
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/parts/${id}`)
+    fetch(`https://dry-springs-42288.herokuapp.com/parts/${id}`)
       .then((res) => res.json())
       .then((data) => setParts(data));
   }, [isReload]);
@@ -55,36 +55,6 @@ const Purchase = () => {
     const address = event.target.address.value;
     const message = event.target.message.value;
 
-    // if (quantity < 0) {
-    //   setError("You have to purchase more than minimum order quantity");
-    //   return;
-    // }
-
-    // if (quantity < parts.mQuantity) {
-    //   setError("You have to purchase product more than minimum order quantity");
-    //   return;
-    // }
-
-    // if (quantity > parts.aQuantity) {
-    //   setError("You can't purchase product more than available quantity");
-    //   return;
-    // }
-
-    // const updateQuantity = { quantity };
-
-    // fetch(`http://localhost:5000/parts/${id}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(updateQuantity),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setIsReload(!isReload);
-    //     setError(" ");
-    //   });
-
     const allData = {
       image: parts.image,
       name: parts.name,
@@ -97,7 +67,7 @@ const Purchase = () => {
       address: address,
     };
     console.log(allData);
-    fetch(`http://localhost:5000/orders`, {
+    fetch(`https://dry-springs-42288.herokuapp.com/orders`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -226,12 +196,12 @@ const Purchase = () => {
                     className="input input-bordered w-full max-w-xs"
                     type="number"
                     name="quantity"
+                    placeholder={parts.mQuantity}
                   />
                 </div>
                 <p className="text-error mt-2">{error}</p>
                 <button
                   className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
-                  // disabled={error && true}
                   disabled={disabled && true}
                 >
                   Purchase

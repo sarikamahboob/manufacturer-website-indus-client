@@ -11,6 +11,7 @@ const AddReview = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
   const [user] = useAuthState(auth);
   const [reviews, setReviews] = useState([]);
@@ -18,7 +19,7 @@ const AddReview = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch(`http://localhost:5000/reviews`, {
+    fetch(`https://dry-springs-42288.herokuapp.com/reviews`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,6 +29,7 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        reset();
       });
   };
   return (

@@ -6,8 +6,8 @@ import website3 from "../../../Images/website3.png";
 const MyWebsites = () => {
   return (
     <div>
-      <h1 className="font-saira text-accent text-4xl text-center font-bold my-14">
-        Meat Our Team
+      <h1 className="font-saira underline text-accent text-4xl text-center font-bold my-14">
+        My Projects
       </h1>
       <div
         className="container mx-auto"

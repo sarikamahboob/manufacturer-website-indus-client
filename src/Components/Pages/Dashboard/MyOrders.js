@@ -19,7 +19,7 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/orders?email=${email}`, {
+    fetch(`https://dry-springs-42288.herokuapp.com/orders?email=${email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -31,7 +31,7 @@ const MyOrders = () => {
   //   const email = user.email;
 
   //   try {
-  //     // fetch(`http://localhost:5000/orders?email=${email}`, {
+  //     // fetch(`https://dry-springs-42288.herokuapp.com/orders?email=${email}`, {
   //     //   headers: {
   //     //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   //     //   },

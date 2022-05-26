@@ -36,14 +36,14 @@ const Portfolio = () => {
             <span className="text-accent font-bold text-2xl">
               LinkedIn Link:
             </span>
-            https://www.linkedin.com /in/sarika-mahboob-744a9a153
+            https://www.linkedin.com/in/sarika-mahboob-744a9a153
           </p>
         </div>
         <div className="shadow-lg p-10 rounded-lg border-t-4 border-accent  h-full">
           <h1 className="mb-5 text-4xl underline font-bold text-accent font-saira text-center ">
             My Skills
           </h1>
-          <div>
+          <div className="font-roboto">
             <div className="flex items-center mt-6">
               <span className="text-accent font-bold text-xl mr-2 w-32">
                 HTML5:
@@ -64,8 +64,8 @@ const Portfolio = () => {
                 max="100"
               ></progress>
             </div>
-            <div className="flex items-center mt-6">
-              <span className="text-accent font-bold text-xl mr-2 w-32">
+            <div className="flex items-center mt-6 ">
+              <span className="text-accent font-bold text-xl mr-2 w-32 ">
                 Bootstrap5:
               </span>
               <progress class="progress w-full" value="90" max="100"></progress>

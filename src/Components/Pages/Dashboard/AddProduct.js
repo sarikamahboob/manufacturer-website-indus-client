@@ -38,7 +38,7 @@ const AddProduct = () => {
             image: img,
           };
 
-          fetch("http://localhost:5000/parts", {
+          fetch("https://dry-springs-42288.herokuapp.com/parts", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -67,7 +67,7 @@ const AddProduct = () => {
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-10">
         <div class="card-body">
           <h2 className="text-2xl font-bold text-center my-8 text-accent font-saira ">
-            Welcome to your Dashboard !!!
+            Add a Product !!!
           </h2>
           <form onSubmit={handleSubmit(onSubmit)} className="font-roboto">
             <div className="form-control w-full max-w-xs">

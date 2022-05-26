@@ -4,7 +4,7 @@ const DeleteAllOrder = ({ deletingOrder, setDeletingOrder, refetch }) => {
   const { _id } = deletingOrder;
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/allorder/${_id}`, {
+    fetch(`https://dry-springs-42288.herokuapp.com/allorder/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

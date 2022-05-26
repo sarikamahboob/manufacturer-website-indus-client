@@ -5,7 +5,7 @@ const DeleteProduct = ({ deletingParts, refetch, setDeletingParts }) => {
   console.log(deletingParts);
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/parts/${_id}`, {
+    fetch(`https://dry-springs-42288.herokuapp.com/parts/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

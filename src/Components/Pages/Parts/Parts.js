@@ -12,7 +12,7 @@ const Parts = () => {
     isLoading,
     refetch,
   } = useQuery("parts", () =>
-    fetch("http://localhost:5000/parts", {
+    fetch("https://dry-springs-42288.herokuapp.com/parts", {
       method: "GET",
     }).then((res) => res.json())
   );

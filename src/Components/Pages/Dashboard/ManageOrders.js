@@ -12,7 +12,7 @@ const ManageOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allorder", () =>
-    fetch("http://localhost:5000/allorder", {
+    fetch("https://dry-springs-42288.herokuapp.com/allorder", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
