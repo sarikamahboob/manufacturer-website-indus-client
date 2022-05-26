@@ -72,7 +72,7 @@ const AddReview = () => {
         <input
           className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
           type="submit"
-          value="Purchase"
+          value="Add Review"
         />
       </form>
     </div>
