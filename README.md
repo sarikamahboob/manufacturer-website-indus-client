@@ -1,6 +1,6 @@
 # Website name : Indus
 
-Live Website Link [Create React App](https://indus-client.web.app).
+Live Website Link [Indus](https://indus-client.web.app).
 
 ## Key Features
 
