@@ -85,7 +85,7 @@ const Header = ({ dark, setDark }) => {
             Indus
           </Link>
         </div>
-        <div class="navbar-end hidden lg:flex">
+        <div class="navbar-middle hidden lg:flex">
           <ul class="menu menu-horizontal p-0 font-roboto">
             <li>
               <NavLink
@@ -161,7 +161,7 @@ const Header = ({ dark, setDark }) => {
               )}
             </li>
 
-            <label class="swap swap-rotate ml-10">
+            <label class="swap swap-rotate ml-10 text-accent">
               <input type="checkbox" onClick={() => setDark(!dark)} />
 
               <svg
@@ -182,7 +182,7 @@ const Header = ({ dark, setDark }) => {
             </label>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end text-accent">
           <label
             tabIndex="0"
             htmlFor="dashboard-sidebar"
