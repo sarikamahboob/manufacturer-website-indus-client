@@ -1,6 +1,6 @@
 # Website name : Indus
 
-Live Website Link [Create React App](https://github.com/facebook/create-react-app).
+Live Website Link [Create React App](https://indus-client.web.app).
 
 ## Key Features
 

@@ -15,7 +15,7 @@ const Header = ({ dark, setDark }) => {
       <div class="navbar  max-w-7xl mx-auto">
         <div class="navbar-start">
           <div class="dropdown">
-            <label tabIndex="0" class="btn btn-ghost lg:hidden">
+            <label tabIndex="0" class="btn btn-ghost lg:hidden text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5"
@@ -33,10 +33,10 @@ const Header = ({ dark, setDark }) => {
             </label>
             <ul
               tabIndex="0"
-              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-accent rounded-box w-52  "
+              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-accent rounded-box w-52 font-roboto  "
             >
-              <li>
-                <NavLink className="font-bold" to="/">
+              <li className="">
+                <NavLink className="font-bold " to="/">
                   Home
                 </NavLink>
               </li>
