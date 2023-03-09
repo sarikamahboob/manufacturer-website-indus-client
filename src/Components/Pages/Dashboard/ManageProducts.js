@@ -11,7 +11,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("parts", () =>
-    fetch("https://dry-springs-42288.herokuapp.com/parts", {
+    fetch("https://manufacturer-website-indus-server.onrender.com/parts", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

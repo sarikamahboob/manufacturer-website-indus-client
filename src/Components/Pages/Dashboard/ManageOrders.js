@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading";
 import AllOrders from "./AllOrders";
 import DeleteAllOrder from "./DeleteAllOrder";
-import MyOrders from "./MyOrders";
 
 const ManageOrders = () => {
   const [deletingOrder, setDeletingOrder] = useState(null);
@@ -12,7 +11,7 @@ const ManageOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allorder", () =>
-    fetch("https://dry-springs-42288.herokuapp.com/allorder", {
+    fetch("https://manufacturer-website-indus-server.onrender.com/allorder", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
@@ -19,7 +18,7 @@ const AddReview = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch(`https://dry-springs-42288.herokuapp.com/reviews`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/reviews`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,5 +1,5 @@
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const CheckoutForm = ({ order }) => {
   const stripe = useStripe();
@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
   const { _id, userName, email, price } = order;
 
   useEffect(() => {
-    fetch("https://dry-springs-42288.herokuapp.com/create-payment-intent", {
+    fetch("https://manufacturer-website-indus-server.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,7 +74,7 @@ const CheckoutForm = ({ order }) => {
         orderId: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://dry-springs-42288.herokuapp.com/orders/${_id}`, {
+      fetch(`https://manufacturer-website-indus-server.onrender.com/orders/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

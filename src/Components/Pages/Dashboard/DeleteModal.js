@@ -1,9 +1,7 @@
-import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
-import Loading from "../../Shared/Loading";
 
 const DeleteModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
   const [user, loading] = useAuthState(auth);
@@ -14,7 +12,7 @@ const DeleteModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
 
   useEffect(() => {
     const email = user.email;
-    fetch(`https://dry-springs-42288.herokuapp.com/orders?email=${email}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/orders?email=${email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -27,7 +25,7 @@ const DeleteModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
   }, [user, navigate]);
 
   const handleDelete = (id) => {
-    fetch(`https://dry-springs-42288.herokuapp.com/orders/${id}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/orders/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

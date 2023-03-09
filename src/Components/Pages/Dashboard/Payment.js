@@ -1,9 +1,9 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../../Shared/Loading";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(
@@ -12,7 +12,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `https://dry-springs-42288.herokuapp.com/orders/${id}`;
+  const url = `https://manufacturer-website-indus-server.onrender.com/orders/${id}`;
 
   const { data: order, isLoading } = useQuery(["orders", id], () =>
     fetch(url, {

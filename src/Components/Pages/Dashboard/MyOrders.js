@@ -1,5 +1,4 @@
-import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,7 +18,7 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`https://dry-springs-42288.herokuapp.com/orders?email=${email}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/orders?email=${email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -31,7 +30,7 @@ const MyOrders = () => {
   //   const email = user.email;
 
   //   try {
-  //     // fetch(`https://dry-springs-42288.herokuapp.com/orders?email=${email}`, {
+  //     // fetch(`https://manufacturer-website-indus-server.onrender.com/orders?email=${email}`, {
   //     //   headers: {
   //     //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   //     //   },

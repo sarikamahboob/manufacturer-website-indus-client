@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const DeleteProduct = ({ deletingParts, refetch, setDeletingParts }) => {
   const { _id } = deletingParts;
   console.log(deletingParts);
 
   const handleDelete = () => {
-    fetch(`https://dry-springs-42288.herokuapp.com/parts/${_id}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/parts/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

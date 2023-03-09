@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { useQuery } from "react-query";
+import React from "react";
 
 const AllOrders = ({ order, index, setDeletingOrder, refetch }) => {
   const { _id, userName, email, number, name, quantity, price, paid, status } =
     order;
 
   const handleOrderStatus = () => {
-    fetch(`https://dry-springs-42288.herokuapp.com/allorder/${_id}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/allorder/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

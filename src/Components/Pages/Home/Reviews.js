@@ -8,7 +8,7 @@ const Reviews = () => {
     isLoading,
     refetch,
   } = useQuery("reviews", () =>
-    fetch("https://dry-springs-42288.herokuapp.com/reviews", {
+    fetch("https://manufacturer-website-indus-server.onrender.com/reviews", {
       method: "GET",
     }).then((res) => res.json())
   );

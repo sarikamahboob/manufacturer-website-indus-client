@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Shared/Loading";
@@ -12,7 +12,7 @@ const Parts = () => {
     isLoading,
     refetch,
   } = useQuery("parts", () =>
-    fetch("https://dry-springs-42288.herokuapp.com/parts", {
+    fetch("https://manufacturer-website-indus-server.onrender.com/parts", {
       method: "GET",
     }).then((res) => res.json())
   );

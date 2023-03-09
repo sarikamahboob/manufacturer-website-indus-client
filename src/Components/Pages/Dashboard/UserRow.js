@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 const UserRow = ({ user, refetch, index }) => {
   const { name, email, role } = user;
   const makeAdmin = () => {
-    fetch(`https://dry-springs-42288.herokuapp.com/user/admin/${email}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

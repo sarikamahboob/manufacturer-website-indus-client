@@ -4,7 +4,7 @@ const DeleteAllOrder = ({ deletingOrder, setDeletingOrder, refetch }) => {
   const { _id } = deletingOrder;
 
   const handleDelete = () => {
-    fetch(`https://dry-springs-42288.herokuapp.com/allorder/${_id}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/allorder/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
-import Loading from "../../Shared/Loading";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddProduct = () => {
@@ -38,7 +37,7 @@ const AddProduct = () => {
             image: img,
           };
 
-          fetch("https://dry-springs-42288.herokuapp.com/parts", {
+          fetch("https://manufacturer-website-indus-server.onrender.com/parts", {
             method: "POST",
             headers: {
               "content-type": "application/json",

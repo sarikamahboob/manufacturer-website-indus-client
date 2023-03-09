@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { useEffect, useState } from "react";
 
 const useToken = (user) => {
@@ -7,7 +6,7 @@ const useToken = (user) => {
   useEffect(() => {
     const email = user?.user?.email;
     if (email) {
-      fetch(`https://dry-springs-42288.herokuapp.com/user/${email}`, {
+      fetch(`https://manufacturer-website-indus-server.onrender.com/user/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

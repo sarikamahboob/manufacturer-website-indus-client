@@ -1,11 +1,10 @@
-import { async } from "@firebase/util";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import auth from "../../../firebase.init";
 import "react-toastify/dist/ReactToastify.css";
+import auth from "../../../firebase.init";
 
 const Purchase = () => {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ const Purchase = () => {
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    fetch(`https://dry-springs-42288.herokuapp.com/parts/${id}`)
+    fetch(`https://manufacturer-website-indus-server.onrender.com/parts/${id}`)
       .then((res) => res.json())
       .then((data) => setParts(data));
   }, [isReload]);
@@ -67,7 +66,7 @@ const Purchase = () => {
       address: address,
     };
     console.log(allData);
-    fetch(`https://dry-springs-42288.herokuapp.com/orders`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/orders`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

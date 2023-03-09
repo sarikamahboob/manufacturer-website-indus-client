@@ -1,5 +1,4 @@
-import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
@@ -25,7 +24,7 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch(`https://dry-springs-42288.herokuapp.com/users?email=${email}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/users?email=${email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -36,7 +35,7 @@ const MyProfile = () => {
   // useEffect(() => {
   //   const email = user.email;
 
-  //   fetch(`https://dry-springs-42288.herokuapp.com/user?email=${email}`, {
+  //   fetch(`https://manufacturer-website-indus-server.onrender.com/user?email=${email}`, {
   //     headers: {
   //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   //     },
@@ -51,7 +50,7 @@ const MyProfile = () => {
     console.log(data);
     const email = user.email;
 
-    fetch(`https://dry-springs-42288.herokuapp.com/user/${email}`, {
+    fetch(`https://manufacturer-website-indus-server.onrender.com/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
